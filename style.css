@@ -82,12 +82,12 @@ body {
   line-height: 1.6;
 }
 
-/* Social icons */
-/* Ukuran ikon */
-.social-icon {
+.social-icons {
+  margin-top: 18px;
   display: flex;
   gap: var(--social-gap);
   align-items: center;
+  flex-wrap: wrap;
 }
 .social-icons .social {
   display: inline-block;
