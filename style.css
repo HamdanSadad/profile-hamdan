@@ -13,12 +13,29 @@ body {
      - Ubah nilai di sini untuk menyesuaikan ukuran semua ikon sosial */
   --social-size: 48px;
   --social-gap: 12px;
+  /* Warna tema (light mode default) */
+  --page-bg: #f4f4f4; /* background area */
+  --card-bg: #ffffff; /* cards, footer, image border */
+  --text: #222222;
+  --muted: #666666;
+  --accent: #007bff;
+  --accent-2: #2196f3;
+  --accent-dark: #0056b3;
+  --img-border: #ffffff;
+  --icon-bg: rgba(0, 0, 0, 0.03);
+  --shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* Hero Section
   - Dua kolom: kiri untuk teks, kanan untuk gambar profil
   - Pada layar kecil layout akan berubah ke satu kolom (kolom terbalik)
 */
+/* set page background so whole page switches with theme */
+body {
+  background: var(--page-bg);
+  color: var(--text);
+}
+
 .hero {
   display: flex;
   align-items: center;
@@ -26,7 +43,7 @@ body {
   gap: 60px;
   height: 100vh;
   padding: 0 10%;
-  background-color: #f4f4f4;
+  background: transparent; /* page background handled on body */
   padding-top: 80px;
 }
 
@@ -36,7 +53,7 @@ body {
 
 .hero-content h1 {
   font-size: 48px;
-  color: #333;
+  color: var(--text);
 }
 
 .hero-content {
@@ -55,7 +72,7 @@ body {
 }
 
 .hero-content h1 span {
-  color: #007bff;
+  color: var(--accent);
 }
 
 #typing {
@@ -65,7 +82,7 @@ body {
 
 .hero-content p {
   font-size: 18px;
-  color: #666;
+  color: var(--muted);
   margin: 20px 0;
   line-height: 1.6;
 }
@@ -83,13 +100,13 @@ body {
   height: var(--social-size);
   border-radius: calc(var(--social-size) / 4);
   text-decoration: none;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     opacity 0.18s;
   overflow: hidden;
-  background: transparent;
+  background: var(--icon-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,8 +131,8 @@ body {
 .btn-sosmed {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--accent);
+  color: #fff;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -123,7 +140,7 @@ body {
 }
 
 .btn-sosmed:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-dark);
 }
 
 .hero-image {
@@ -143,7 +160,7 @@ body {
   top: 50%;
   width: 370px;
   height: 370px;
-  background: linear-gradient(135deg, #007bff 60%, #2196f3 100%);
+  background: linear-gradient(135deg, var(--accent) 60%, var(--accent-2) 100%);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.4s cubic-bezier(0.4, 2, 0.6, 1);
@@ -160,7 +177,7 @@ body {
   height: 350px;
   object-fit: cover;
   border-radius: 50%;
-  border: 10px solid #fff;
+  border: 10px solid var(--img-border);
   position: relative;
   z-index: 2;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
@@ -173,9 +190,66 @@ body {
 footer {
   text-align: center;
   padding: 20px 10%;
-  background-color: #fff;
-  color: #666;
+  background-color: var(--card-bg);
+  color: var(--muted);
   font-size: 14px;
+}
+
+/* Theme: dark mode variables applied when <body> memiliki class .dark */
+body.dark {
+  --page-bg: #071021;
+  --card-bg: #0b1220;
+  --text: #e6eef8;
+  --muted: #9fb0c8;
+  --accent: #4f9cff;
+  --accent-2: #6fb3ff;
+  --accent-dark: #2d6fd6;
+  --img-border: rgba(255, 255, 255, 0.06);
+  --icon-bg: rgba(255, 255, 255, 0.02);
+  --shadow: 0 6px 16px rgba(2, 6, 23, 0.7);
+}
+
+/* Theme toggle button (fixed in top-right) */
+#theme-toggle {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  background: var(--card-bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+#theme-toggle:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Make interactive states (hover / focus) clearly visible in both themes */
+.social-icons .social:focus,
+.social-icons .social:hover {
+  outline: none;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.social-icons .social:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.12);
+}
+
+.social-icons .social:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* Footer: area kecil untuk informasi hak cipta / kontak singkat */

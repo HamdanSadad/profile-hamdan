@@ -13,6 +13,8 @@
     -->
 </head>
 <body>
+    <!-- Theme toggle button (global, fixed) -->
+    <button id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme">🌙</button>
     <!-- Hero Section: tampilan utama di atas fold, berisi teks perkenalan dan foto profil -->
     <section class="hero">
         <div class="hero-content">
@@ -82,6 +84,41 @@
                 setTimeout(type, 200);
             }
         }());
+
+        // Theme toggle: simpan preferensi di localStorage dan terapkan class pada <body>
+        (function themeToggle() {
+            const btn = document.getElementById('theme-toggle');
+            const body = document.body;
+            const preferred = localStorage.getItem('theme');
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark');
+                    btn.textContent = '☀️';
+                    btn.setAttribute('aria-pressed', 'true');
+                } else {
+                    body.classList.remove('dark');
+                    btn.textContent = '🌙';
+                    btn.setAttribute('aria-pressed', 'false');
+                }
+            }
+
+            // initial: check saved preference or system preference
+            if (preferred) {
+                applyTheme(preferred);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light');
+            }
+
+            btn.addEventListener('click', () => {
+                const isDark = body.classList.toggle('dark');
+                const theme = isDark ? 'dark' : 'light';
+                applyTheme(theme);
+                localStorage.setItem('theme', theme);
+            });
+        })();
     </script>
 
 </body>
