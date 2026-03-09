@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya</title>
+    <link rel="stylesheet" href="style.css">
+    <!--
+      Penjelasan singkat:
+      - file ini memuat struktur halaman portofolio sederhana.
+      - `style.css` mengatur semua styling (layout, responsif, ikon).
+      - Script di bawah menangani smooth scroll dan animasi typing.
+    -->
+</head>
+<body>
+    <!-- Hero Section: tampilan utama di atas fold, berisi teks perkenalan dan foto profil -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Halo, Saya <span id="typing"></span></h1>
+            <p>Saya adalah seorang mahasiswa semester 6 berkuliah di Universitas Muhammadiyah Cirebon yang berfokus dalam bidang web developer.</p>
+            <!-- Social Icons: link ke GitHub, LinkedIn, WhatsApp, Instagram -->
+            <div class="social-icons">
+                <a href="https://github.com/HamdanSadad/" class="social" aria-label="GitHub" title="GitHub">
+                    <img src="img/github.png" alt="GitHub" class="social-icon">
+                </a>
+                <a href="https://www.linkedin.com/in/hamdansadad/" class="social" aria-label="LinkedIn" title="LinkedIn">
+                    <img src="img/linkedin.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://wa.me/6282117964344/" class="social" aria-label="WhatsApp" title="WhatsApp">
+                    <img src="img/whatsapp.png" alt="WhatsApp" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/hamdannn_s" class="social" aria-label="Instagram" title="Instagram">
+                    <img src="img/instagram.png" alt="Instagram" class="social-icon">
+                </a>
+            </div>
+        </div>
+        
+        <!-- Hero Image: foto profil yang diberi efek lingkaran dan bayangan -->
+        <div class="hero-image">
+            <img src="img/profil.jpg" alt="Foto Profil">
+        </div>
+    </section>
+
+    <!-- Footer: informasi kontak / hak cipta singkat -->
+    <footer id="contact">
+        <p>© 2026 Hamdan Sadad. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Typing animation for hero text
+        const texts = ["Hamdan Sadad", "seorang Web Developer"];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+                /*
+                    Fungsi `type()`:
+                    - Menampilkan teks satu-per-satu seperti efek mengetik.
+                    - Setelah satu teks selesai, tunggu 2 detik lalu lanjut ke teks berikutnya.
+                */
+                (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById('typing').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 200);
+            }
+        }());
+    </script>
+
+</body>
+</html>

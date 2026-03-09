@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  /* Variabel global untuk ukuran dan jarak ikon sosial
+     - Ubah nilai di sini untuk menyesuaikan ukuran semua ikon sosial */
+  --social-size: 48px;
+  --social-gap: 12px;
+}
+
+/* Hero Section
+  - Dua kolom: kiri untuk teks, kanan untuk gambar profil
+  - Pada layar kecil layout akan berubah ke satu kolom (kolom terbalik)
+*/
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  height: 100vh;
+  padding: 0 10%;
+  background-color: #f4f4f4;
+  padding-top: 80px;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  color: #333;
+}
+
+.hero-content {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content h1 span {
+  color: #007bff;
+}
+
+#typing {
+  display: inline-block;
+  min-width: 200px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #666;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+/* Social icons container: gunakan flex untuk tata horizontal, gap dikontrol variabel */
+.social-icons {
+  margin-top: 18px;
+  display: flex;
+  gap: var(--social-gap);
+  align-items: center;
+}
+.social-icons .social {
+  display: inline-block;
+  width: var(--social-size);
+  height: var(--social-size);
+  border-radius: calc(var(--social-size) / 4);
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-icons .social:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.social-icon {
+  /* ukuran gambar ikon di dalam tombol sosial (proporsional terhadap tombol) */
+  width: calc(var(--social-size) * 0.58);
+  height: calc(var(--social-size) * 0.58);
+  display: block;
+  object-fit: contain;
+}
+.social-icons .social:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+}
+
+.btn-sosmed {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-sosmed:hover {
+  background-color: #0056b3;
+}
+
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* Hero image pseudo-element: lingkaran gradasi di belakang foto */
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 370px;
+  height: 370px;
+  background: linear-gradient(135deg, #007bff 60%, #2196f3 100%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s cubic-bezier(0.4, 2, 0.6, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-image:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hero-image img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 10px solid #fff;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  transition: filter 0.3s;
+}
+.hero-image img:hover {
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+footer {
+  text-align: center;
+  padding: 20px 10%;
+  background-color: #fff;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Footer: area kecil untuk informasi hak cipta / kontak singkat */
+
+/* Media query: tablet / small desktop */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-image img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+    transition: filter 0.3s;
+  }
+  .hero-image img:hover {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  }
+
+  :root {
+    --social-size: 44px;
+    --social-gap: 10px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin: 18px auto;
+  }
+}
+
+/* Media query: small phones */
+@media (max-width: 480px) {
+  :root {
+    --social-size: 36px;
+    --social-gap: 8px;
+  }
+
+  .hero-image img {
+    width: 220px;
+    height: 220px;
+    border: 8px solid #fff;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin: 12px auto;
+  }
+}
