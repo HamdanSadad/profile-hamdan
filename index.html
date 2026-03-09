@@ -5,22 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Saya</title>
     <link rel="stylesheet" href="style.css">
-    <!--
-      Penjelasan singkat:
-      - file ini memuat struktur halaman portofolio sederhana.
-      - `style.css` mengatur semua styling (layout, responsif, ikon).
-      - Script di bawah menangani smooth scroll dan animasi typing.
-    -->
 </head>
 <body>
-    <!-- Theme toggle button (global, fixed) -->
+    <!-- Tombol tema -->
     <button id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme">🌙</button>
-    <!-- Hero Section: tampilan utama di atas fold, berisi teks perkenalan dan foto profil -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Halo, Saya <span id="typing"></span></h1>
             <p>Saya adalah seorang mahasiswa semester 6 berkuliah di Universitas Muhammadiyah Cirebon yang berfokus dalam bidang web developer.</p>
-            <!-- Social Icons: link ke GitHub, LinkedIn, WhatsApp, Instagram -->
+            <!-- Social icons -->
             <div class="social-icons">
                 <a href="https://github.com/HamdanSadad/" class="social" aria-label="GitHub" title="GitHub">
                     <img src="img/github.png" alt="GitHub" class="social-icon">
@@ -37,13 +31,13 @@
             </div>
         </div>
         
-        <!-- Hero Image: foto profil yang diberi efek lingkaran dan bayangan -->
+        <!-- Hero image -->
         <div class="hero-image">
             <img src="img/profil.jpg" alt="Foto Profil">
         </div>
     </section>
 
-    <!-- Footer: informasi kontak / hak cipta singkat -->
+    <!-- Footer -->
     <footer id="contact">
         <p>© 2026 Hamdan Sadad. All rights reserved.</p>
     </footer>
@@ -56,18 +50,14 @@
             });
         });
 
-        // Typing animation for hero text
+        // Animasi mengetik
         const texts = ["Hamdan Sadad", "seorang Web Developer"];
         let count = 0;
         let index = 0;
         let currentText = '';
         let letter = '';
 
-                /*
-                    Fungsi `type()`:
-                    - Menampilkan teks satu-per-satu seperti efek mengetik.
-                    - Setelah satu teks selesai, tunggu 2 detik lalu lanjut ke teks berikutnya.
-                */
+                // Fungsi typing
                 (function type() {
             if (count === texts.length) {
                 count = 0;
@@ -85,7 +75,7 @@
             }
         }());
 
-        // Theme toggle: simpan preferensi di localStorage dan terapkan class pada <body>
+        // Toggle tema
         (function themeToggle() {
             const btn = document.getElementById('theme-toggle');
             const body = document.body;

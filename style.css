@@ -9,12 +9,10 @@ body {
 }
 
 :root {
-  /* Variabel global untuk ukuran dan jarak ikon sosial
-     - Ubah nilai di sini untuk menyesuaikan ukuran semua ikon sosial */
+  /* Variabel global */
   --social-size: 48px;
   --social-gap: 12px;
-  /* Warna tema (light mode default) */
-  --page-bg: #f4f4f4; /* background area */
+  --page-bg: #f4f4f4;
   --card-bg: #ffffff; /* cards, footer, image border */
   --text: #222222;
   --muted: #666666;
@@ -26,11 +24,8 @@ body {
   --shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Hero Section
-  - Dua kolom: kiri untuk teks, kanan untuk gambar profil
-  - Pada layar kecil layout akan berubah ke satu kolom (kolom terbalik)
-*/
-/* set page background so whole page switches with theme */
+/* Hero Section */
+/* Page background */
 body {
   background: var(--page-bg);
   color: var(--text);
@@ -87,9 +82,9 @@ body {
   line-height: 1.6;
 }
 
-/* Social icons container: gunakan flex untuk tata horizontal, gap dikontrol variabel */
-.social-icons {
-  margin-top: 18px;
+/* Social icons */
+/* Ukuran ikon */
+.social-icon {
   display: flex;
   gap: var(--social-gap);
   align-items: center;
@@ -151,7 +146,7 @@ body {
   flex: 1;
 }
 
-/* Hero image pseudo-element: lingkaran gradasi di belakang foto */
+/* Hero image */
 
 .hero-image::before {
   content: "";
@@ -195,7 +190,7 @@ footer {
   font-size: 14px;
 }
 
-/* Theme: dark mode variables applied when <body> memiliki class .dark */
+/* Dark theme variables */
 body.dark {
   --page-bg: #071021;
   --card-bg: #0b1220;
@@ -209,7 +204,7 @@ body.dark {
   --shadow: 0 6px 16px rgba(2, 6, 23, 0.7);
 }
 
-/* Theme toggle button (fixed in top-right) */
+/* Theme toggle */
 #theme-toggle {
   position: fixed;
   right: 16px;
@@ -237,7 +232,7 @@ body.dark {
   outline-offset: 2px;
 }
 
-/* Make interactive states (hover / focus) clearly visible in both themes */
+/* Interactive states */
 .social-icons .social:focus,
 .social-icons .social:hover {
   outline: none;
@@ -252,9 +247,7 @@ body.dark {
   transform: translateY(0) scale(0.98);
 }
 
-/* Footer: area kecil untuk informasi hak cipta / kontak singkat */
-
-/* Media query: tablet / small desktop */
+/* Responsive: tablet */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column-reverse;
@@ -286,7 +279,7 @@ body.dark {
   }
 }
 
-/* Media query: small phones */
+/* Responsive: phone */
 @media (max-width: 480px) {
   :root {
     --social-size: 36px;
